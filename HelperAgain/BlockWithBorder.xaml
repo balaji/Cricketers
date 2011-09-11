@@ -1,0 +1,17 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" x:Name="userControl"
+	mc:Ignorable="d"
+	x:Class="Cricketers.BlockWithBorder">
+
+	<Grid x:Name="LayoutRoot" Background="Transparent">
+		<Border BorderThickness="1" Margin="1" Padding="1" VirtualizingStackPanel.VirtualizationMode="Standard">
+			<Border.BorderBrush>
+				<SolidColorBrush Color="{StaticResource PhoneAccentColor}"/>
+			</Border.BorderBrush>
+			<TextBlock x:Name="txtControl" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding DisplayText, ElementName=userControl}" />
+		</Border>
+	</Grid>
+</UserControl>

@@ -1,0 +1,301 @@
+﻿<phone:PhoneApplicationPage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:local="clr-namespace:Cricketers" 
+    x:Class="Cricketers.Stats" 
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <controls:Pivot Title="CRICKETERS" x:Name="Statistics">
+            <controls:PivotItem Header="profile">
+                <Grid>
+                    <ScrollViewer Margin="0,0,-12,0">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock x:Name="name" Style="{StaticResource PhoneTextLargeStyle}" Margin="2 2 6 6" TextWrapping="Wrap" />
+                            <TextBlock x:Name="born" Style="{StaticResource PhoneTextLargeStyle}"  Margin="2 2 6 6" TextWrapping="Wrap" />
+                            <TextBlock x:Name="battingStyle" Style="{StaticResource PhoneTextLargeStyle}"  Margin="2 2 6 6"/>
+                            <TextBlock x:Name="bowlingStyle" Style="{StaticResource PhoneTextLargeStyle}"  Margin="2 2 6 6" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="fieldingPosition" Style="{StaticResource PhoneTextLargeStyle}"  Margin="2 2 6 6"/>
+
+                            <ListBox x:Name="teams" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}" Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource PhoneInverseInactiveBrush}" TextWrapping="Wrap" />
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </controls:PivotItem>
+
+            <controls:PivotItem Header="debut">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Padding="3" Text="First-Class" Grid.Column="0" Grid.Row="4"/>
+                    <TextBlock Padding="3" Text="Test" Grid.Column="0" Grid.Row="1"/>
+                    <TextBlock Padding="3" Text="ODI" Grid.Column="0" Grid.Row="0"/>
+                    <TextBlock Padding="3" Text="T20 (I)" Grid.Column="0" Grid.Row="2"/>
+                    <TextBlock Padding="3" Text="T20 (L)" Grid.Column="0" Grid.Row="3"/>
+
+                    <TextBlock Padding="3" Grid.Column="1" Grid.Row="4" x:Name="FirstClass" FontSize="24" TextWrapping="Wrap" />
+                    <TextBlock Padding="3" Grid.Column="1" Grid.Row="1" x:Name="Test" FontSize="24" TextWrapping="Wrap"/>
+                    <TextBlock Padding="3" Grid.Column="1" Grid.Row="0" x:Name="ODI" FontSize="24" TextWrapping="Wrap"/>
+                    <TextBlock Padding="3" Grid.Column="1" Grid.Row="2" x:Name="T20I" FontSize="24" TextWrapping="Wrap"/>
+                    <TextBlock Padding="3" Grid.Column="1" Grid.Row="3" x:Name="Twenty20" FontSize="24" TextWrapping="Wrap"/>
+                </Grid>
+            </controls:PivotItem>
+
+            <controls:PivotItem Header="batting">
+                <Grid Name="battingStatGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                	<local:BlockWithBorder Height="33" Width="70" DisplayText="ODI" Grid.Row="0" Grid.Column="1"/>
+                    <local:BlockWithBorder Grid.Row="0" Grid.Column="2" Height="33" Width="70" DisplayText="Test"/>
+                    <local:BlockWithBorder Grid.Row="0" Grid.Column="3" Height="33" Width="70" DisplayText="I-Class"/>
+                    <local:BlockWithBorder Grid.Row="0" Grid.Column="4" Height="33" Width="70" DisplayText="T20I"/>
+                    <local:BlockWithBorder Grid.Row="0" Grid.Column="5" Height="33" Width="70" DisplayText="T20"/>
+                    <local:BlockWithBorder Grid.Row="1" Grid.Column="0" Height="33" Width="70" DisplayText="Mts"/>
+                    <local:BlockWithBorder Grid.Row="2" Grid.Column="0" Height="33" Width="70" DisplayText="Inns"/>
+                    <local:BlockWithBorder Grid.Row="3" Grid.Column="0" Height="33" Width="70" DisplayText="Runs"/>
+                    <local:BlockWithBorder Grid.Row="4" Grid.Column="0" Height="33" Width="70" DisplayText="Ave"/>
+                    <local:BlockWithBorder Grid.Row="5" Grid.Column="0" Height="33" Width="70" DisplayText="S.R."/>
+                    <local:BlockWithBorder Grid.Row="6" Grid.Column="0" Height="33" Width="70" DisplayText="H.S."/>
+                    <local:BlockWithBorder Grid.Row="7" Grid.Column="0" Height="33" Width="70" DisplayText="100s"/>
+                    <local:BlockWithBorder Grid.Row="8" Grid.Column="0" Height="33" Width="70" DisplayText="50s"/>
+                    <local:BlockWithBorder Grid.Row="9" Grid.Column="0" Height="33" Width="70" DisplayText="NOs"/>
+                    <local:BlockWithBorder Grid.Row="10" Grid.Column="0" Height="33" Width="70" DisplayText="Cts"/>
+                    <local:BlockWithBorder Grid.Row="11" Grid.Column="0" Height="33" Width="70" DisplayText="Sts"/>
+                    <local:BlockWithBorder Grid.Row="12" Grid.Column="0" Height="33" Width="70" DisplayText="4s"/>
+                    <local:BlockWithBorder Grid.Row="13" Grid.Column="0" Height="33" Width="70" DisplayText="6s"/>
+
+                    <local:BlockWithBorder Grid.Row="1" Grid.Column="1" Height="33" Width="70"  x:Name="odiBatMts"/>
+                    <local:BlockWithBorder Grid.Row="2" Grid.Column="1" Height="33" Width="70"  x:Name="odiBatInns"/>
+                    <local:BlockWithBorder Grid.Row="3" Grid.Column="1" Height="33" Width="70"  x:Name="odiBatRuns"/>
+                    <local:BlockWithBorder Grid.Row="4" Grid.Column="1" Height="33" Width="70"  x:Name="odiBatAve"/>
+                    <local:BlockWithBorder Grid.Row="5" Grid.Column="1" Height="33" Width="70"  x:Name="odiBatSr"/>
+                    <local:BlockWithBorder Grid.Row="6" Grid.Column="1" Height="33" Width="70"  x:Name="odiBatHs"/>
+                    <local:BlockWithBorder Grid.Row="7" Grid.Column="1" Height="33" Width="70"  x:Name="odiBatHuns"/>
+                    <local:BlockWithBorder Grid.Row="8" Grid.Column="1" Height="33" Width="70"  x:Name="odiBatFifs"/>
+                    <local:BlockWithBorder Grid.Row="9" Grid.Column="1" Height="33" Width="70"  x:Name="odiBatNos"/>
+                    <local:BlockWithBorder Grid.Row="10" Grid.Column="1" Height="33" Width="70"  x:Name="odiBatCts"/>
+                    <local:BlockWithBorder Grid.Row="11" Grid.Column="1" Height="33" Width="70"  x:Name="odiBatSts"/>
+                    <local:BlockWithBorder Grid.Row="12" Grid.Column="1" Height="33" Width="70"  x:Name="odiBatSix"/>
+                    <local:BlockWithBorder Grid.Row="13" Grid.Column="1" Height="33" Width="70"  x:Name="odiBatFours"/>
+
+                    <local:BlockWithBorder Grid.Row="1" Grid.Column="2" Height="33" Width="70"  x:Name="testBatMts"/>
+                    <local:BlockWithBorder Grid.Row="2" Grid.Column="2" Height="33" Width="70"  x:Name="testBatInns"/>
+                    <local:BlockWithBorder Grid.Row="3" Grid.Column="2" Height="33" Width="70"  x:Name="testBatRuns"/>
+                    <local:BlockWithBorder Grid.Row="4" Grid.Column="2" Height="33" Width="70"  x:Name="testBatAve"/>
+                    <local:BlockWithBorder Grid.Row="5" Grid.Column="2" Height="33" Width="70"  x:Name="testBatSr"/>
+                    <local:BlockWithBorder Grid.Row="6" Grid.Column="2" Height="33" Width="70"  x:Name="testBatHs"/>
+                    <local:BlockWithBorder Grid.Row="7" Grid.Column="2" Height="33" Width="70"  x:Name="testBatHuns"/>
+                    <local:BlockWithBorder Grid.Row="8" Grid.Column="2" Height="33" Width="70"  x:Name="testBatFifs"/>
+                    <local:BlockWithBorder Grid.Row="9" Grid.Column="2" Height="33" Width="70"  x:Name="testBatNos"/>
+                    <local:BlockWithBorder Grid.Row="10" Grid.Column="2" Height="33" Width="70"  x:Name="testBatCts"/>
+                    <local:BlockWithBorder Grid.Row="11" Grid.Column="2" Height="33" Width="70"  x:Name="testBatSts"/>
+                    <local:BlockWithBorder Grid.Row="12" Grid.Column="2" Height="33" Width="70"  x:Name="testBatSix"/>
+                    <local:BlockWithBorder Grid.Row="13" Grid.Column="2" Height="33" Width="70"  x:Name="testBatFours"/>
+
+                    <local:BlockWithBorder Grid.Row="1" Grid.Column="3" Height="33" Width="70"  x:Name="fcBatMts"/>
+                    <local:BlockWithBorder Grid.Row="2" Grid.Column="3" Height="33" Width="70"  x:Name="fcBatInns"/>
+                    <local:BlockWithBorder Grid.Row="3" Grid.Column="3" Height="33" Width="70"  x:Name="fcBatRuns"/>
+                    <local:BlockWithBorder Grid.Row="4" Grid.Column="3" Height="33" Width="70"  x:Name="fcBatAve"/>
+                    <local:BlockWithBorder Grid.Row="5" Grid.Column="3" Height="33" Width="70"  x:Name="fcBatSr"/>
+                    <local:BlockWithBorder Grid.Row="6" Grid.Column="3" Height="33" Width="70"  x:Name="fcBatHs"/>
+                    <local:BlockWithBorder Grid.Row="7" Grid.Column="3" Height="33" Width="70"  x:Name="fcBatHuns"/>
+                    <local:BlockWithBorder Grid.Row="8" Grid.Column="3" Height="33" Width="70"  x:Name="fcBatFifs"/>
+                    <local:BlockWithBorder Grid.Row="9" Grid.Column="3" Height="33" Width="70"  x:Name="fcBatNos"/>
+                    <local:BlockWithBorder Grid.Row="10" Grid.Column="3" Height="33" Width="70"  x:Name="fcBatCts"/>
+                    <local:BlockWithBorder Grid.Row="11" Grid.Column="3" Height="33" Width="70"  x:Name="fcBatSts"/>
+                    <local:BlockWithBorder Grid.Row="12" Grid.Column="3" Height="33" Width="70"  x:Name="fcBatSix"/>
+                    <local:BlockWithBorder Grid.Row="13" Grid.Column="3" Height="33" Width="70"  x:Name="fcBatFours"/>
+
+                    <local:BlockWithBorder Grid.Row="1" Grid.Column="4" Height="33" Width="70"  x:Name="t20IBatMts"/>
+                    <local:BlockWithBorder Grid.Row="2" Grid.Column="4" Height="33" Width="70"  x:Name="t20IBatInns"/>
+                    <local:BlockWithBorder Grid.Row="3" Grid.Column="4" Height="33" Width="70"  x:Name="t20IBatRuns"/>
+                    <local:BlockWithBorder Grid.Row="4" Grid.Column="4" Height="33" Width="70"  x:Name="t20IBatAve"/>
+                    <local:BlockWithBorder Grid.Row="5" Grid.Column="4" Height="33" Width="70"  x:Name="t20IBatSr"/>
+                    <local:BlockWithBorder Grid.Row="6" Grid.Column="4" Height="33" Width="70"  x:Name="t20IBatHs"/>
+                    <local:BlockWithBorder Grid.Row="7" Grid.Column="4" Height="33" Width="70"  x:Name="t20IBatHuns"/>
+                    <local:BlockWithBorder Grid.Row="8" Grid.Column="4" Height="33" Width="70"  x:Name="t20IBatFifs"/>
+                    <local:BlockWithBorder Grid.Row="9" Grid.Column="4" Height="33" Width="70"  x:Name="t20IBatNos"/>
+                    <local:BlockWithBorder Grid.Row="10" Grid.Column="4" Height="33" Width="70"  x:Name="t20IBatCts"/>
+                    <local:BlockWithBorder Grid.Row="11" Grid.Column="4" Height="33" Width="70"  x:Name="t20IBatSts"/>
+                    <local:BlockWithBorder Grid.Row="12" Grid.Column="4" Height="33" Width="70"  x:Name="t20IBatSix"/>
+                    <local:BlockWithBorder Grid.Row="13" Grid.Column="4" Height="33" Width="70"  x:Name="t20IBatFours"/>
+
+                    <local:BlockWithBorder Grid.Row="1" Grid.Column="5" Height="33" Width="70"  x:Name="t20LBatMts"/>
+                    <local:BlockWithBorder Grid.Row="2" Grid.Column="5" Height="33" Width="70"  x:Name="t20LBatInns"/>
+                    <local:BlockWithBorder Grid.Row="3" Grid.Column="5" Height="33" Width="70"  x:Name="t20LBatRuns"/>
+                    <local:BlockWithBorder Grid.Row="4" Grid.Column="5" Height="33" Width="70"  x:Name="t20LBatAve"/>
+                    <local:BlockWithBorder Grid.Row="5" Grid.Column="5" Height="33" Width="70"  x:Name="t20LBatSr"/>
+                    <local:BlockWithBorder Grid.Row="6" Grid.Column="5" Height="33" Width="70"  x:Name="t20LBatHs"/>
+                    <local:BlockWithBorder Grid.Row="7" Grid.Column="5" Height="33" Width="70"  x:Name="t20LBatHuns"/>
+                    <local:BlockWithBorder Grid.Row="8" Grid.Column="5" Height="33" Width="70"  x:Name="t20LBatFifs"/>
+                    <local:BlockWithBorder Grid.Row="9" Grid.Column="5" Height="33" Width="70"  x:Name="t20LBatNos"/>
+                    <local:BlockWithBorder Grid.Row="10" Grid.Column="5" Height="33" Width="70"  x:Name="t20LBatCts"/>
+                    <local:BlockWithBorder Grid.Row="11" Grid.Column="5" Height="33" Width="70"  x:Name="t20LBatSts"/>
+                    <local:BlockWithBorder Grid.Row="12" Grid.Column="5" Height="33" Width="70"  x:Name="t20LBatSix"/>
+                    <local:BlockWithBorder Grid.Row="13" Grid.Column="5" Height="33" Width="70"  x:Name="t20LBatFours"/>
+                </Grid>
+            </controls:PivotItem>
+
+            <controls:PivotItem Header="bowling">
+                <Grid Name="bowlingStatGrid" VirtualizingStackPanel.VirtualizationMode="Standard">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <local:BlockWithBorder Height="33" Width="70" DisplayText="ODI" Grid.Row="0" Grid.Column="1"/>
+                    <local:BlockWithBorder Grid.Row="0" Grid.Column="2" Height="33" Width="70" DisplayText="Test"/>
+                    <local:BlockWithBorder Grid.Row="0" Grid.Column="3" Height="33" Width="70" DisplayText="I-Class"/>
+                    <local:BlockWithBorder Grid.Row="0" Grid.Column="4" Height="33" Width="70" DisplayText="T20I"/>
+                    <local:BlockWithBorder Grid.Row="0" Grid.Column="5" Height="33" Width="70" DisplayText="T20"/>
+                    <local:BlockWithBorder Grid.Row="1" Grid.Column="0" Height="33" Width="70" DisplayText="Mts"/>
+                    <local:BlockWithBorder Grid.Row="2" Grid.Column="0" Height="33" Width="70" DisplayText="Inns"/>
+                    <local:BlockWithBorder Grid.Row="3" Grid.Column="0" Height="33" Width="70" DisplayText="Wkts"/>
+                    <local:BlockWithBorder Grid.Row="4" Grid.Column="0" Height="33" Width="70" DisplayText="Ave"/>
+                    <local:BlockWithBorder Grid.Row="5" Grid.Column="0" Height="33" Width="70" DisplayText="E.R."/>
+                    <local:BlockWithBorder Grid.Row="6" Grid.Column="0" Height="33" Width="70" DisplayText="B.I"/>
+                    <local:BlockWithBorder Grid.Row="7" Grid.Column="0" Height="33" Width="70" DisplayText="B.M."/>
+                    <local:BlockWithBorder Grid.Row="8" Grid.Column="0" Height="33" Width="70" DisplayText="10w"/>
+                    <local:BlockWithBorder Grid.Row="9" Grid.Column="0" Height="33" Width="70" DisplayText="5w"/>
+                    <local:BlockWithBorder Grid.Row="10" Grid.Column="0" Height="33" Width="70" DisplayText="4w"/>
+                    <local:BlockWithBorder Grid.Row="11" Grid.Column="0" Height="33" Width="70" DisplayText="Overs"/>
+                    <local:BlockWithBorder Grid.Row="12" Grid.Column="0" Height="33" Width="70" DisplayText="S.R."/>
+
+                    <local:BlockWithBorder Grid.Row="1" Grid.Column="1" Height="33" Width="70"  x:Name="odiBowlMts"/>
+                    <local:BlockWithBorder Grid.Row="2" Grid.Column="1" Height="33" Width="70"  x:Name="odiBowlInns"/>
+                    <local:BlockWithBorder Grid.Row="3" Grid.Column="1" Height="33" Width="70"  x:Name="odiBowlWkts"/>
+                    <local:BlockWithBorder Grid.Row="4" Grid.Column="1" Height="33" Width="70"  x:Name="odiBowlAve"/>
+                    <local:BlockWithBorder Grid.Row="5" Grid.Column="1" Height="33" Width="70"  x:Name="odiBowlEr"/>
+                    <local:BlockWithBorder Grid.Row="6" Grid.Column="1" Height="33" Width="70"  x:Name="odiBowlBi"/>
+                    <local:BlockWithBorder Grid.Row="7" Grid.Column="1" Height="33" Width="70"  x:Name="odiBowlBm"/>
+                    <local:BlockWithBorder Grid.Row="8" Grid.Column="1" Height="33" Width="70"  x:Name="odiBowlTen"/>
+                    <local:BlockWithBorder Grid.Row="9" Grid.Column="1" Height="33" Width="70"  x:Name="odiBowlFive"/>
+                    <local:BlockWithBorder Grid.Row="10" Grid.Column="1" Height="33" Width="70"  x:Name="odiBowlFour"/>
+                    <local:BlockWithBorder Grid.Row="11" Grid.Column="1" Height="33" Width="70"  x:Name="odiBowlOver"/>
+                    <local:BlockWithBorder Grid.Row="12" Grid.Column="1" Height="33" Width="70"  x:Name="odiBowlSr"/>
+
+                    <local:BlockWithBorder Grid.Row="1" Grid.Column="2" Height="33" Width="70"  x:Name="testBowlMts"/>
+                    <local:BlockWithBorder Grid.Row="2" Grid.Column="2" Height="33" Width="70"  x:Name="testBowlInns"/>
+                    <local:BlockWithBorder Grid.Row="3" Grid.Column="2" Height="33" Width="70"  x:Name="testBowlWkts"/>
+                    <local:BlockWithBorder Grid.Row="4" Grid.Column="2" Height="33" Width="70"  x:Name="testBowlAve"/>
+                    <local:BlockWithBorder Grid.Row="5" Grid.Column="2" Height="33" Width="70"  x:Name="testBowlEr"/>
+                    <local:BlockWithBorder Grid.Row="6" Grid.Column="2" Height="33" Width="70"  x:Name="testBowlBi"/>
+                    <local:BlockWithBorder Grid.Row="7" Grid.Column="2" Height="33" Width="70"  x:Name="testBowlBm"/>
+                    <local:BlockWithBorder Grid.Row="8" Grid.Column="2" Height="33" Width="70"  x:Name="testBowlTen"/>
+                    <local:BlockWithBorder Grid.Row="9" Grid.Column="2" Height="33" Width="70"  x:Name="testBowlFive"/>
+                    <local:BlockWithBorder Grid.Row="10" Grid.Column="2" Height="33" Width="70"  x:Name="testBowlFour"/>
+                    <local:BlockWithBorder Grid.Row="11" Grid.Column="2" Height="33" Width="70"  x:Name="testBowlOver"/>
+                    <local:BlockWithBorder Grid.Row="12" Grid.Column="2" Height="33" Width="70"  x:Name="testBowlSr"/>
+
+                    <local:BlockWithBorder Grid.Row="1" Grid.Column="3" Height="33" Width="70"  x:Name="fcBowlMts"/>
+                    <local:BlockWithBorder Grid.Row="2" Grid.Column="3" Height="33" Width="70"  x:Name="fcBowlInns"/>
+                    <local:BlockWithBorder Grid.Row="3" Grid.Column="3" Height="33" Width="70"  x:Name="fcBowlWkts"/>
+                    <local:BlockWithBorder Grid.Row="4" Grid.Column="3" Height="33" Width="70"  x:Name="fcBowlAve"/>
+                    <local:BlockWithBorder Grid.Row="5" Grid.Column="3" Height="33" Width="70"  x:Name="fcBowlEr"/>
+                    <local:BlockWithBorder Grid.Row="6" Grid.Column="3" Height="33" Width="70"  x:Name="fcBowlBi"/>
+                    <local:BlockWithBorder Grid.Row="7" Grid.Column="3" Height="33" Width="70"  x:Name="fcBowlBm"/>
+                    <local:BlockWithBorder Grid.Row="8" Grid.Column="3" Height="33" Width="70"  x:Name="fcBowlTen"/>
+                    <local:BlockWithBorder Grid.Row="9" Grid.Column="3" Height="33" Width="70"  x:Name="fcBowlFive"/>
+                    <local:BlockWithBorder Grid.Row="10" Grid.Column="3" Height="33" Width="70"  x:Name="fcBowlFour"/>
+                    <local:BlockWithBorder Grid.Row="11" Grid.Column="3" Height="33" Width="70"  x:Name="fcBowlOver"/>
+                    <local:BlockWithBorder Grid.Row="12" Grid.Column="3" Height="33" Width="70"  x:Name="fcBowlSr"/>
+
+                    <local:BlockWithBorder Grid.Row="1" Grid.Column="4" Height="33" Width="70"  x:Name="t20IBowlMts"/>
+                    <local:BlockWithBorder Grid.Row="2" Grid.Column="4" Height="33" Width="70"  x:Name="t20IBowlInns"/>
+                    <local:BlockWithBorder Grid.Row="3" Grid.Column="4" Height="33" Width="70"  x:Name="t20IBowlWkts"/>
+                    <local:BlockWithBorder Grid.Row="4" Grid.Column="4" Height="33" Width="70"  x:Name="t20IBowlAve"/>
+                    <local:BlockWithBorder Grid.Row="5" Grid.Column="4" Height="33" Width="70"  x:Name="t20IBowlEr"/>
+                    <local:BlockWithBorder Grid.Row="6" Grid.Column="4" Height="33" Width="70"  x:Name="t20IBowlBi"/>
+                    <local:BlockWithBorder Grid.Row="7" Grid.Column="4" Height="33" Width="70"  x:Name="t20IBowlBm"/>
+                    <local:BlockWithBorder Grid.Row="8" Grid.Column="4" Height="33" Width="70"  x:Name="t20IBowlTen"/>
+                    <local:BlockWithBorder Grid.Row="9" Grid.Column="4" Height="33" Width="70"  x:Name="t20IBowlFive"/>
+                    <local:BlockWithBorder Grid.Row="10" Grid.Column="4" Height="33" Width="70"  x:Name="t20IBowlFour"/>
+                    <local:BlockWithBorder Grid.Row="11" Grid.Column="4" Height="33" Width="70"  x:Name="t20IBowlOver"/>
+                    <local:BlockWithBorder Grid.Row="12" Grid.Column="4" Height="33" Width="70"  x:Name="t20IBowlSr"/>
+
+                    <local:BlockWithBorder Grid.Row="1" Grid.Column="5" Height="33" Width="70"  x:Name="t20LBowlMts"/>
+                    <local:BlockWithBorder Grid.Row="2" Grid.Column="5" Height="33" Width="70"  x:Name="t20LBowlInns"/>
+                    <local:BlockWithBorder Grid.Row="3" Grid.Column="5" Height="33" Width="70"  x:Name="t20LBowlWkts"/>
+                    <local:BlockWithBorder Grid.Row="4" Grid.Column="5" Height="33" Width="70"  x:Name="t20LBowlAve"/>
+                    <local:BlockWithBorder Grid.Row="5" Grid.Column="5" Height="33" Width="70"  x:Name="t20LBowlEr"/>
+                    <local:BlockWithBorder Grid.Row="6" Grid.Column="5" Height="33" Width="70"  x:Name="t20LBowlBi"/>
+                    <local:BlockWithBorder Grid.Row="7" Grid.Column="5" Height="33" Width="70"  x:Name="t20LBowlBm"/>
+                    <local:BlockWithBorder Grid.Row="8" Grid.Column="5" Height="33" Width="70"  x:Name="t20LBowlTen"/>
+                    <local:BlockWithBorder Grid.Row="9" Grid.Column="5" Height="33" Width="70"  x:Name="t20LBowlFive"/>
+                    <local:BlockWithBorder Grid.Row="10" Grid.Column="5" Height="33" Width="70"  x:Name="t20LBowlFour"/>
+                    <local:BlockWithBorder Grid.Row="11" Grid.Column="5" Height="33" Width="70"  x:Name="t20LBowlOver"/>
+                    <local:BlockWithBorder Grid.Row="12" Grid.Column="5" Height="33" Width="70"  x:Name="t20LBowlSr"/>
+
+
+                </Grid>
+            </controls:PivotItem>
+        </controls:Pivot>
+    </Grid>
+
+</phone:PhoneApplicationPage>
