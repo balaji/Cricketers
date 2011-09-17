@@ -12,7 +12,7 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="True" DataContext="{Binding}"
     toolkit:TiltEffect.IsTiltEnabled="True">
 
@@ -61,7 +61,7 @@
                                 <Style TargetType="HyperlinkButton" BasedOn="{StaticResource PhoneButtonBase}"/>
                             </StackPanel.Resources>
                             <HyperlinkButton Tag="{Binding}" Click="HyperlinkButton_Click" Style="{StaticResource HyperlinkEmptyStyle}">
-                                <TextBlock Text="{Binding}" Style="{StaticResource PhoneTextExtraLargeStyle}" Margin="0 0 0 4"></TextBlock>
+                                <TextBlock Text="{Binding}" Loaded="TextBlock_Loaded" Style="{StaticResource PhoneTextExtraLargeStyle}" Margin="0 0 0 4"></TextBlock>
                             </HyperlinkButton>
                         </StackPanel>
                     </DataTemplate>

@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Microsoft.Phone.Controls;
 using Cricketers.Database;
+using System.Windows.Media;
 
 namespace Cricketers {
     public partial class MainPage : PhoneApplicationPage {
@@ -25,7 +26,13 @@ namespace Cricketers {
 
         private void HyperlinkButton_Click(object sender, RoutedEventArgs e) {
             HyperlinkButton button = sender as HyperlinkButton;
+            ((TextBlock)button.Content).Foreground = (Brush)Application.Current.Resources["PhoneAccentBrush"];
             this.NavigationService.Navigate(new Uri("/Players.xaml?country=" + button.Tag, UriKind.Relative));
+        }
+
+        private void TextBlock_Loaded(object sender, RoutedEventArgs e)
+        {
+            ((TextBlock)sender).Foreground = (Brush)Application.Current.Resources["PhoneContrastBackgroundBrush"];
         }
     }
 }

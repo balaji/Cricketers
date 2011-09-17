@@ -65,12 +65,17 @@ namespace Cricketers.Data {
         public static PlayersShortName ShortNames(string country) {
             var players = from profile in App.DB.Profiles where profile.Country == country select new { profile.Name, profile.ProfileId };
             ObservableCollection<PlayerDisplay> shortNames = new ObservableCollection<PlayerDisplay>();
+            string space = " ";
+            StringBuilder builder;
+            string shortName;
+            string[] names;
+            string firstName;
             foreach (var player in players) {
-                string[] names = player.Name.Split(' ');
-                string space = " ";
-                StringBuilder builder = new StringBuilder();
+                names = player.Name.Split(' ');
+                builder = new StringBuilder();
                 if (names.Length > 1) {
-                    string shortName = builder.Append(names[0]).Append(space).Append(names[names.Length - 1]).ToString();
+                    firstName = (names[0].Equals("Mohammad"))? names[1] : names[0];
+                    shortName = builder.Append(firstName).Append(space).Append(names[names.Length - 1]).ToString();
                     shortNames.Add(new PlayerDisplay { Name = shortName, Id = player.ProfileId.ToString() });
                     builder.Clear();
                 } else {

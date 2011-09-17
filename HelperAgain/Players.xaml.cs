@@ -33,5 +33,15 @@ namespace Cricketers {
                 this.NavigationService.Navigate(new Uri("/Stats.xaml?id=" + player.Id, UriKind.Relative));
             }
         }
+
+        private void TextBlock_Loaded(object sender, RoutedEventArgs e)
+        {
+            ((TextBlock)sender).Foreground = (Brush)Application.Current.Resources["PhoneContrastBackgroundBrush"];
+        }
+
+        private void TextBlock_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            ((TextBlock)sender).Foreground = (Brush)Application.Current.Resources["PhoneAccentBrush"];
+        }
     }
 }

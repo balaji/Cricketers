@@ -56,10 +56,10 @@
     <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone.Interop" />
     <Reference Include="Newtonsoft.Json.WindowsPhone">
-      <HintPath>..\..\..\..\..\Desktop\Newtonsoft.Json.WindowsPhone.dll</HintPath>
+      <HintPath>..\..\..\..\..\RestSharp-dlls\Newtonsoft.Json.WindowsPhone.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp.WindowsPhone">
-      <HintPath>..\..\..\..\..\Desktop\RestSharp.WindowsPhone.dll</HintPath>
+      <HintPath>..\..\..\..\..\RestSharp-dlls\RestSharp.WindowsPhone.dll</HintPath>
     </Reference>
     <Reference Include="system.data.linq" />
     <Reference Include="System.Runtime.Serialization" />
@@ -109,9 +109,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="alpha1.sdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="alpha2.sdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
