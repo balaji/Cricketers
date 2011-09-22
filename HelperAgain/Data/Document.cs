@@ -1,26 +1,31 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Helper.Data {
+namespace Helper.Data
+{
 
     [DataContract]
-    public class CouchJson {
+    public class CouchJson
+    {
         [DataMember]
         public string map { get; set; }
         [DataMember]
         public string reduce { get; set; }
     }
 
-    public class CouchResponse {
+    public class CouchResponse
+    {
         public CouchData[] rows;
     }
 
     [DataContract]
-    public class CouchData {
+    public class CouchData
+    {
         [DataMember]
         public Document key;
     }
 
-    public class Document {
+    public class Document
+    {
         public string country { get; set; }
         public string image { get; set; }
         public DocProfile profile { get; set; }
@@ -30,7 +35,8 @@ namespace Helper.Data {
     }
 
     [DataContract]
-    public class DocProfile {
+    public class DocProfile
+    {
         [DataMember(Name = "Batting style")]
         public string battingStyle = "-";
 
@@ -51,7 +57,8 @@ namespace Helper.Data {
     }
 
     [DataContract]
-    public class DocDebut {
+    public class DocDebut
+    {
         [DataMember(Name = "ODI debut")]
         public string odi = "-";
 
@@ -69,7 +76,8 @@ namespace Helper.Data {
     }
 
     [DataContract]
-    public class Batting {
+    public class Batting
+    {
         [DataMember(Name = "ODIs")]
         public BattingStats odi = new BattingStats();
 
@@ -88,7 +96,8 @@ namespace Helper.Data {
 
 
     [DataContract]
-    public class Bowling {
+    public class Bowling
+    {
         [DataMember(Name = "ODIs")]
         public BowlingStats odi = new BowlingStats();
 
@@ -107,7 +116,8 @@ namespace Helper.Data {
 
 
     [DataContract]
-    public class BattingStats {
+    public class BattingStats
+    {
         [DataMember(Name = "Runs")]
         public string runs = "-";
 
@@ -149,7 +159,8 @@ namespace Helper.Data {
     }
 
     [DataContract]
-    public class BowlingStats {
+    public class BowlingStats
+    {
         [DataMember(Name = "10")]
         public string tens = "-";
 

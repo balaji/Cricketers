@@ -6,10 +6,12 @@ using Microsoft.Phone.Controls;
 using Cricketers.Database;
 using System.Windows.Media;
 
-namespace Cricketers {
-    public partial class MainPage : PhoneApplicationPage {
-
-        public MainPage() {           
+namespace Cricketers
+{
+    public partial class MainPage : PhoneApplicationPage
+    {
+        public MainPage()
+        {
             InitializeComponent();
             var countries = (from profile in App.DB.Profiles select profile.Country).Distinct<string>();
             CountriesList.ItemsSource = countries;
@@ -22,9 +24,10 @@ namespace Cricketers {
             //    }
             //    new Cricketers.Data.Utility().Extract();
             //}
-       }
+        }
 
-        private void HyperlinkButton_Click(object sender, RoutedEventArgs e) {
+        private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
+        {
             HyperlinkButton button = sender as HyperlinkButton;
             ((TextBlock)button.Content).Foreground = (Brush)Application.Current.Resources["PhoneAccentBrush"];
             this.NavigationService.Navigate(new Uri("/Players.xaml?country=" + button.Tag, UriKind.Relative));

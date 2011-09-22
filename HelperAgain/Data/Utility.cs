@@ -7,11 +7,14 @@ using System.Windows.Controls;
 using System.Windows;
 using System.Linq;
 
-namespace Cricketers.Data {
-    public class Utility {
-        public void Extract() {
+namespace Cricketers.Data
+{
+    public class Utility
+    {
+        public void Extract()
+        {
             RestClient cli = new RestClient("http://192.168.217.128:81/");
-           
+
             RestRequest request = new RestRequest("/profile/_temp_view", Method.POST);
             request.RequestFormat = DataFormat.Json;
             CouchJson json = new CouchJson();
@@ -19,14 +22,17 @@ namespace Cricketers.Data {
                                         if(doc.bat['ODIs'] || doc.bowl['ODIs']) emit(doc,null);
                                     }";
             request.AddBody(json);
-            cli.ExecuteAsync(request, delegate(RestResponse re) {
+            cli.ExecuteAsync(request, delegate(RestResponse re)
+            {
                 CouchResponse docs = JsonConvert.DeserializeObject<CouchResponse>(re.Content);
 
 
-                foreach (CouchData data in docs.rows) {
+                foreach (CouchData data in docs.rows)
+                {
                     Document doc = data.key;
                     EntitySet<Team> teams = new EntitySet<Team>();
-                    foreach (string team in doc.profile.Teams) {
+                    foreach (string team in doc.profile.Teams)
+                    {
                         teams.Add(new Team { Name = team });
                     }
 
@@ -39,7 +45,8 @@ namespace Cricketers.Data {
 
                     EntitySet<BattingStat> battingStats = new EntitySet<BattingStat>();
                     if (!doc.bat.odi.matches.Equals("-"))
-                        battingStats.Add(new BattingStat {
+                        battingStats.Add(new BattingStat
+                        {
                             MatchType = 0,
                             Runs = doc.bat.odi.runs,
                             Fours = doc.bat.odi.fours,
@@ -55,7 +62,8 @@ namespace Cricketers.Data {
                             Stumpings = doc.bat.odi.stumpings
                         });
                     if (!doc.bat.test.matches.Equals("-"))
-                        battingStats.Add(new BattingStat {
+                        battingStats.Add(new BattingStat
+                        {
                             MatchType = 1,
                             Runs = doc.bat.test.runs,
                             Fours = doc.bat.test.fours,
@@ -71,7 +79,8 @@ namespace Cricketers.Data {
                             Stumpings = doc.bat.test.stumpings
                         });
                     if (!doc.bat.firstClass.matches.Equals("-"))
-                        battingStats.Add(new BattingStat {
+                        battingStats.Add(new BattingStat
+                        {
                             MatchType = 2,
                             Runs = doc.bat.firstClass.runs,
                             Fours = doc.bat.firstClass.fours,
@@ -87,7 +96,8 @@ namespace Cricketers.Data {
                             Stumpings = doc.bat.firstClass.stumpings
                         });
                     if (!doc.bat.twenty20.matches.Equals("-"))
-                        battingStats.Add(new BattingStat {
+                        battingStats.Add(new BattingStat
+                        {
                             MatchType = 4,
                             Runs = doc.bat.twenty20.runs,
                             Fours = doc.bat.twenty20.fours,
@@ -103,7 +113,8 @@ namespace Cricketers.Data {
                             Stumpings = doc.bat.twenty20.stumpings
                         });
                     if (!doc.bat.t20i.matches.Equals("-"))
-                        battingStats.Add(new BattingStat {
+                        battingStats.Add(new BattingStat
+                        {
                             MatchType = 3,
                             Runs = doc.bat.t20i.runs,
                             Fours = doc.bat.t20i.fours,
@@ -121,7 +132,8 @@ namespace Cricketers.Data {
 
                     EntitySet<BowlingStat> bowlingStats = new EntitySet<BowlingStat>();
                     if (!doc.bowl.odi.matches.Equals("-"))
-                        bowlingStats.Add(new BowlingStat {
+                        bowlingStats.Add(new BowlingStat
+                        {
                             MatchType = 0,
                             Matches = doc.bowl.odi.matches,
                             Average = doc.bowl.odi.average,
@@ -137,7 +149,8 @@ namespace Cricketers.Data {
                             Tens = doc.bowl.odi.tens
                         });
                     if (!doc.bowl.test.matches.Equals("-"))
-                        bowlingStats.Add(new BowlingStat {
+                        bowlingStats.Add(new BowlingStat
+                        {
                             MatchType = 1,
                             Matches = doc.bowl.test.matches,
                             Average = doc.bowl.test.average,
@@ -153,7 +166,8 @@ namespace Cricketers.Data {
                             Tens = doc.bowl.test.tens
                         });
                     if (!doc.bowl.firstClass.matches.Equals("-"))
-                        bowlingStats.Add(new BowlingStat {
+                        bowlingStats.Add(new BowlingStat
+                        {
                             MatchType = 2,
                             Matches = doc.bowl.firstClass.matches,
                             Average = doc.bowl.firstClass.average,
@@ -169,7 +183,8 @@ namespace Cricketers.Data {
                             Tens = doc.bowl.firstClass.tens
                         });
                     if (!doc.bowl.t20i.matches.Equals("-"))
-                        bowlingStats.Add(new BowlingStat {
+                        bowlingStats.Add(new BowlingStat
+                        {
                             MatchType = 3,
                             Matches = doc.bowl.t20i.matches,
                             Average = doc.bowl.t20i.average,
@@ -185,7 +200,8 @@ namespace Cricketers.Data {
                             Tens = doc.bowl.t20i.tens
                         });
                     if (!doc.bowl.twenty20.matches.Equals("-"))
-                        bowlingStats.Add(new BowlingStat {
+                        bowlingStats.Add(new BowlingStat
+                        {
                             MatchType = 4,
                             Matches = doc.bowl.twenty20.matches,
                             Average = doc.bowl.twenty20.average,
@@ -201,8 +217,10 @@ namespace Cricketers.Data {
                             Tens = doc.bowl.twenty20.tens
                         });
 
-                    Profile p = new Profile {
-                        Country = doc.country, Born = doc.profile.Born,
+                    Profile p = new Profile
+                    {
+                        Country = doc.country,
+                        Born = doc.profile.Born,
                         BattingStyle = doc.profile.battingStyle,
                         BowlingStyle = doc.profile.bowlingStyle,
                         FieldingPosition = doc.profile.fieldingPosition,

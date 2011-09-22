@@ -1,44 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using Microsoft.Phone.Controls;
-using Cricketers.Database;
-using System.Collections.ObjectModel;
-using Cricketers.Data;
 using System.Text;
+using Cricketers.Database;
+using Microsoft.Phone.Controls;
 
-namespace Cricketers {
-    public partial class Stats : PhoneApplicationPage {
-        public Stats() {
+namespace Cricketers
+{
+    public partial class Stats : PhoneApplicationPage
+    {
+        public Stats()
+        {
             InitializeComponent();
         }
 
-        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e) {
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        {
             base.OnNavigatedTo(e);
             string id = "";
-            if (NavigationContext.QueryString.TryGetValue("id", out id)) {
+            if (NavigationContext.QueryString.TryGetValue("id", out id))
+            {
                 var p = (from profile in App.DB.Profiles where profile.ProfileId == Int32.Parse(id) select profile).Single();
                 name.Text = p.Name;
                 born.Text = p.Born;
                 battingStyle.Text = p.BattingStyle;
-                if (!p.BowlingStyle.Equals("-")) {
+                if (!p.BowlingStyle.Equals("-"))
+                {
                     bowlingStyle.Text = p.BowlingStyle;
                 }
-                if (!p.FieldingPosition.Equals("-")) {
+                if (!p.FieldingPosition.Equals("-"))
+                {
                     fieldingPosition.Text = p.FieldingPosition;
                 }
                 teams.ItemsSource = p.Teams;
                 var debuts = p.Debuts;
-                foreach (Debut debut in debuts) {
-                    switch (debut.MatchType) {
+                foreach (Debut debut in debuts)
+                {
+                    switch (debut.MatchType)
+                    {
                         case 0:
                             ODI.Text = debut.Match;
                             break;
@@ -64,7 +63,8 @@ namespace Cricketers {
                 var bowlDic = new Dictionary<int, string>() {
                         {0, "odiBowl"}, {1, "testBowl"}, {2, "fcBowl"}, {3, "t20IBowl"}, {4, "t20LBowl"}
                     };
-                foreach (BattingStat stat in battingStats) {
+                foreach (BattingStat stat in battingStats)
+                {
                     (battingStatGrid.FindName(batDic[stat.MatchType] + "Mts") as Cricketers.BlockWithBorder).DisplayText = stat.Matches;
                     (battingStatGrid.FindName(batDic[stat.MatchType] + "Inns") as Cricketers.BlockWithBorder).DisplayText = stat.Innings;
                     (battingStatGrid.FindName(batDic[stat.MatchType] + "Runs") as Cricketers.BlockWithBorder).DisplayText = stat.Runs;
@@ -81,7 +81,8 @@ namespace Cricketers {
                 }
 
                 var bowlingStats = p.BowlingStats;
-                foreach (BowlingStat stat in bowlingStats) {
+                foreach (BowlingStat stat in bowlingStats)
+                {
                     (bowlingStatGrid.FindName(bowlDic[stat.MatchType] + "Mts") as Cricketers.BlockWithBorder).DisplayText = stat.Matches;
                     (bowlingStatGrid.FindName(bowlDic[stat.MatchType] + "Inns") as Cricketers.BlockWithBorder).DisplayText = stat.Innings;
                     (bowlingStatGrid.FindName(bowlDic[stat.MatchType] + "Wkts") as Cricketers.BlockWithBorder).DisplayText = stat.Wickets;

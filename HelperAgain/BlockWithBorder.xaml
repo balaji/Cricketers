@@ -12,7 +12,7 @@
 			<Border.BorderBrush>
 				<SolidColorBrush Color="Gray"/>
 			</Border.BorderBrush>
-			<TextBlock x:Name="txtControl" Padding="3,0,0,0" VerticalAlignment="Center" Height="33" Width="70" HorizontalAlignment="Center" Text="{Binding DisplayText, ElementName=userControl}" Foreground="{StaticResource PhoneAccentBrush}" />
+			<TextBlock x:Name="txtControl" Padding="3,0,0,0" VerticalAlignment="Center" Height="33" Width="70" HorizontalAlignment="Center" Text="{Binding DisplayText, ElementName=userControl}" Foreground="{StaticResource PhoneAccentBrush}" FontWeight="Bold" />
 		</Border>
 	</Grid>
 </UserControl>

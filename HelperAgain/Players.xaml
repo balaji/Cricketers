@@ -52,7 +52,7 @@
     </toolkit:TransitionService.NavigationOutTransition>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot" Background="Transparent" Loaded="LayoutRoot_Loaded">
         <Grid.RowDefinitions>
         	<RowDefinition Height="Auto"/>
         	<RowDefinition Height="*"/>
@@ -105,6 +105,7 @@
                 </toolkit:LongListSelector.ItemTemplate>
             </toolkit:LongListSelector>
         </Grid>
+        <toolkit:PerformanceProgressBar VerticalAlignment="Top" x:Name="_performanceProgressBar"/>
     </Grid>
 
 </phone:PhoneApplicationPage>
