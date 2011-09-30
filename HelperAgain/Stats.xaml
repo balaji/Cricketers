@@ -16,8 +16,11 @@
     shell:SystemTray.IsVisible="True">
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <controls:Pivot Title="CRICKETERS" x:Name="Statistics" Height="768" Width="480">
-            <controls:PivotItem Header="profile">
+        <controls:Pivot Margin="-11,-17,0,0" x:Name="Statistics" Grid.Row="1">
+            <controls:Pivot.Title>
+                <TextBlock Tap="ApplicationTitle_Tap">CRICKETERS</TextBlock>
+            </controls:Pivot.Title>
+            <controls:PivotItem Header="profile" Margin="30,3,20,3">
                 <Grid>
                     <ScrollViewer Margin="0,0,-12,0">
                         <StackPanel Orientation="Vertical">
@@ -39,7 +42,7 @@
                 </Grid>
             </controls:PivotItem>
 
-            <controls:PivotItem Header="debut">
+            <controls:PivotItem Header="debut" Margin="30,3,20,3">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100"/>
@@ -67,7 +70,7 @@
                 </Grid>
             </controls:PivotItem>
 
-            <controls:PivotItem Header="batting">
+            <controls:PivotItem Header="batting" Margin="30,3,20,3">
                 <Grid Name="battingStatGrid">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -184,7 +187,7 @@
                 </Grid>
             </controls:PivotItem>
 
-            <controls:PivotItem Header="bowling">
+            <controls:PivotItem Header="bowling" Margin="30,3,20,3">
                 <Grid Name="bowlingStatGrid" VirtualizingStackPanel.VirtualizationMode="Standard">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>

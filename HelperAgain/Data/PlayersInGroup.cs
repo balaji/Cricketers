@@ -77,7 +77,7 @@ namespace Cricketers.Data
                 builder = new StringBuilder();
                 if (names.Length > 1)
                 {
-                    firstName = (names[0].Equals("Mohammad")) ? names[1] : names[0];
+                    firstName = (names[0].Equals("Mohammad") && names.Length > 2) ? names[1] : names[0];
                     shortName = builder.Append(firstName).Append(space).Append(names[names.Length - 1]).ToString();
                     shortNames.Add(new PlayerDisplay { Name = shortName, Id = player.ProfileId.ToString() });
                     builder.Clear();

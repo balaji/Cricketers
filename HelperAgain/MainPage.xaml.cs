@@ -37,5 +37,10 @@ namespace Cricketers
         {
             ((TextBlock)sender).Foreground = (Brush)Application.Current.Resources["PhoneContrastBackgroundBrush"];
         }
+
+        private void ApplicationTitle_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("/About.xaml", UriKind.Relative));   
+        }
     }
 }
